@@ -1,0 +1,43 @@
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-serving-web-content'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.2.RELEASE'
+
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '21.0'
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.14'
+
+    testCompile("junit:junit")
+}
