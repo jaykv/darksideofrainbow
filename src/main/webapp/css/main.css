@@ -1,3 +1,12 @@
-.row {
-    margin:0!important;
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+.center_div{
+    margin: 0 auto;
+    width:80% /* value of your choice which suits your alignment */
 }

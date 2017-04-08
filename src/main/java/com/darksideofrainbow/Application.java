@@ -1,8 +1,5 @@
 package com.darksideofrainbow;
 
-/**
- * Created by Jay on 4/6/2017.
- */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

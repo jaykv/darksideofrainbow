@@ -3,9 +3,6 @@ package com.darksideofrainbow.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by Jay on 4/6/2017.
- */
 @Controller
 public class AdminController {
 

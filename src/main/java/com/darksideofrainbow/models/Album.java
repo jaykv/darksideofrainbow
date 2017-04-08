@@ -6,9 +6,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by Jay on 4/6/2017.
- */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

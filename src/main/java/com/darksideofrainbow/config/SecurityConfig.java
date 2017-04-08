@@ -7,9 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-/**
- * Created by Jay on 4/6/2017.
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -18,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 
         //  Ignore the resources
-        web.ignoring().antMatchers("/css/**", "/img/**");
+        web.ignoring().antMatchers("/css/**", "/img/**", "/js/**");
     }
 
     @Override
