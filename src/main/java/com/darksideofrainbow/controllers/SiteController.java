@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SiteController {
 
-    @RequestMapping(value = "/about")
+    @RequestMapping(value = {"/about", "/aboutus", "/about-us"})
     public String aboutPage() {
         return "about";
     }
@@ -16,7 +16,7 @@ public class SiteController {
         return "search";
     }
 
-    @RequestMapping(value = "/contact-us")
+    @RequestMapping(value = {"/contact", "/contactus", "/contact-us"})
     public String contactPage() {
         return "contact";
     }

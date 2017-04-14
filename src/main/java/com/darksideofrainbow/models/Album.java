@@ -4,16 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Entity
 public class Album {
-    private int albumId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "album_id_seq")
+    @SequenceGenerator(name = "album_id_seq", sequenceName = "album_id_seq", allocationSize = 100)
+    private Long albumId;
+
     private String title;
     private String artist;
-    private LocalDateTime dateReleasted;
+    private LocalDateTime dateReleased;
     private Genre genre;
     private int tracks;
     private double price;
