@@ -8,5 +8,38 @@ body{
 
 .center_div{
     margin: 0 auto;
-    width:80% /* value of your choice which suits your alignment */
+    width:100% /* value of your choice which suits your alignment */
+}
+
+.navbar-no-margin {
+    margin-bottom:0;
+}
+
+.navbar {
+
+    background-color:#24252A!important;
+    color:#afb3b3!important;
+}
+
+#main-jumbo{
+    margin-bottom: 0px;
+    margin-top: 0px;
+    background-color:black!important;
+    height: 75%;
+    background-image: url(http://pock.be/sound/wp-content/uploads/2015/10/Event-Light.png); /*http://pock.be/sound/wp-content/uploads/2015/10/Main-Slide1.png);*/
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    opacity: 100;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
+#container-main {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#container-jumbo {
+    padding-top:300px;
 }

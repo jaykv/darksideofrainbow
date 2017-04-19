@@ -30,6 +30,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
 
+    //compile("org.springframework.boot:spring-boot-starter-data-rest")
+
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.2.RELEASE'
 
@@ -38,6 +40,25 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compile group: 'org.projectlombok', name: 'lombok', version: '1.16.14'
+
+    // https://mvnrepository.com/artifact/org.webjars/jquery
+    compile group: 'org.webjars', name: 'jquery', version: '2.1.3'
+
+    // https://mvnrepository.com/artifact/org.webjars/bootstrap
+    compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
+
+    // https://mvnrepository.com/artifact/org.webjars.bower/bootstrap-material-design
+    compile group: 'org.webjars.bower', name: 'bootstrap-material-design', version: '0.5.10'
+
+    // https://mvnrepository.com/artifact/org.webjars/angularjs
+    compile group: 'org.webjars', name: 'angularjs', version: '1.6.2'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '1.5.2.RELEASE'
+
+// https://mvnrepository.com/artifact/postgresql/postgresql
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+
 
     testCompile("junit:junit")
 }

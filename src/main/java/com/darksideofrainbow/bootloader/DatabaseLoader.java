@@ -14,29 +14,28 @@ import java.time.LocalDateTime;
 
 @Component
 public class DatabaseLoader implements ApplicationListener<ContextRefreshedEvent> {
-/*
+
     @Autowired
     private AlbumRepository albumRepository;
 
     @Autowired
     private ApplicationUserRepository applicationUserRepository;
-*/
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
-       /*
-        Album moreLife = new Album(1L, "More Life", "Drake", LocalDateTime.now(), Genre.HIP_HOP, 12, 12.99);
+        Album moreLife = new Album("More Life", "Drake", LocalDateTime.now(), Genre.HIP_HOP, 12, 12.99);
         albumRepository.create(moreLife);
-        Album damn = new Album(2L, "DAMN.", "Kendrick Lamar", LocalDateTime.now(), Genre.HIP_HOP, 17, 10.99);
+        Album damn = new Album("DAMN.", "Kendrick Lamar", LocalDateTime.now(), Genre.HIP_HOP, 13, 10.99);
         albumRepository.create(damn);
+        Album pablo = new Album("Life of Pablo", "Kanye West", LocalDateTime.now(), Genre.HIP_HOP, 12, 15.00);
+        albumRepository.create(pablo);
 
-
-        ApplicationUser jay = new ApplicationUser(1, "jay", "123456", Boolean.TRUE);
+        ApplicationUser jay = new ApplicationUser("jay", "123456", Boolean.TRUE);
         applicationUserRepository.createApplicationUser(jay);
-        ApplicationUser harambe = new ApplicationUser(2, "harambe", "cincinnati", Boolean.TRUE);
+        ApplicationUser harambe = new ApplicationUser("harambe", "cincinnati", Boolean.TRUE);
         applicationUserRepository.createApplicationUser(harambe);
-        ApplicationUser shia = new ApplicationUser(3, "shia", "flagfail1", Boolean.FALSE);
+        ApplicationUser shia = new ApplicationUser("shia", "flagfail1", Boolean.FALSE);
         applicationUserRepository.createApplicationUser(shia);
-        */
     }
 }

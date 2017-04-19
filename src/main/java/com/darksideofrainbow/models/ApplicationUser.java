@@ -21,4 +21,10 @@ public class ApplicationUser {
     private String username;
     private String password;
     private Boolean isAdmin;
+
+    public ApplicationUser(String username, String password, Boolean isAdmin) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
 }

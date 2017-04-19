@@ -16,19 +16,19 @@ public class AlbumRepositoryImpl implements AlbumRepository {
     @Autowired
     private AlbumCrudRepository albumCrudRepository;
 
-    @Override
+    //@Override
     public List<Album> findAll() {
         List<Album> albumList = new ArrayList<>();
         albumCrudRepository.findAll().forEach(albumList::add);
         return albumList;
     }
 
-    @Override
+    //@Override
     public Album find(Long id) {
         return albumCrudRepository.findOne(id);
     }
 
-    @Override
+    //@Override
     public List<Album> findByName(String albumName) {
         List<Album> albumList = new ArrayList<>();
         albumCrudRepository.findAll().forEach(albumList::add);
@@ -37,12 +37,12 @@ public class AlbumRepositoryImpl implements AlbumRepository {
                 .collect(Collectors.toList());
     }
 
-    @Override
+    //@Override
     public Album create(Album album) {
         return albumCrudRepository.save(album);
     }
 
-    @Override
+    //@Override
     public Album edit(Long id, String name, Double price) {
         Album album = albumCrudRepository.findOne(id);
         if (album != null) {
@@ -53,7 +53,7 @@ public class AlbumRepositoryImpl implements AlbumRepository {
         return album;
     }
 
-    @Override
+    //@Override
     public Boolean delete(Long id) {
         albumCrudRepository.delete(id);
         return Boolean.TRUE;

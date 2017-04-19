@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:include="layout :: headFragment(pageTitle='Dark Side of the Rainbow')"></head>
-<body ng-app="hello">
+<body ng-app="albumsApp" ng-controller="albums" class="ng-cloak">
 
-<header th:include="layout :: header"></header>
-<div class="container-fluid center_div">
+<header th:include="layout :: header(activePage='index')"></header>
+<div id="main-jumbo" class="jumbotron">
+    <div id="container-jumbo" class="text-center container">
+        <button id="btn-discover" class="btn btn-primary btn-raised btn-lg">Discover Music</button>
+    </div>
+</div>
+<div id="container-main" class="container-fluid center_div">
     <div class="well">
+        <h3 th:if="${#httpServletRequest.remoteUser}" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3>
+        <div class="text-center">
+            <h1>FEATURED TRENDING ALBUMS</h1>
+            <h3>NEW ALBUM LIST</h3>
+        </div>
+        <button class="btn btn-primary btn-raised btn-lg" ng-click="login()">Connect to Spotify</button>
+
+        <div class="row">
+            <div ng-repeat="al in albumsList | limitTo:-3" class="col-md-4">
+                <a href="#">
+                    <img src="https://www.w3schools.com//w3images/lights.jpg" alt="Lights" style="width:100%"/>
+                </a>
+                <div class="caption">
+                    <p>{{al.title}}</p>
+                    <p>{{al.artist}}</p>
+                </div>
+            </div>
+        </div>
+        <!--
         <h1>Greeting</h1>
         <div ng-controller="home as home" class="ng-cloak">
             <p>The ID is {{home.greeting.id}}</p>
             <p>The content is {{home.greeting.content}}</p>
         </div>
+        -->
     </div>
 </div>
 
 <footer th:include="layout :: footer"></footer>
 
 <th:block th:include="layout :: script"></th:block>
+<script th:src="@{/js/lib/angular-spotify.min.js}"></script>
 <script th:src="@{/js/app.js}"></script>
-
 </body>
 </html>

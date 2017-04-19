@@ -3,11 +3,50 @@
 <head th:include="layout :: headFragment(pageTitle='About Us - Dark Side of the Rainbow')"></head>
 <body>
 
-<header th:include="layout :: header"></header>
+<header th:include="layout :: header(activePage='about')"></header>
 
+
+<div class="container-fluid center_div">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="well">
+            <h2>Dark Side of the Rainbow</h2>
+            <p>
+                Tech Used:
+            </p>
+            <ul>
+                <li>Spring Boot, Security, Rest, JPA</li>
+                <li>Thymeleaf</li>
+                <li>AngularJS</li>
+                <li>jQuery</li>
+                <li>Bootstrap - Material Design Theme</li>
+                <li>Lombok</li>
+                <li>PostgreSQL</li>
+            </ul>
+
+            <p>
+                Features:
+            </p>
+            <ul>
+                <li>Login and Registration</li>
+                <li>Spotify integration</li>
+                <li>Manage Users and Albums</li>
+                <li>Simple Search</li>
+            </ul>
+
+            <p>
+                To-do:
+            </p>
+            <ul>
+                <li>Unit Testing</li>
+                <li>User Settings</li>
+                <li>Shop</li>
+                <li>Advanced Search</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <footer th:include="layout :: footer"></footer>
-
-
+<th:block th:include="layout :: script"></th:block>
 </body>
 </html>

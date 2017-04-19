@@ -1,12 +1,12 @@
 package com.darksideofrainbow.repository;
 
 import com.darksideofrainbow.models.Album;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+//import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@RepositoryRestResource(collectionResourceRel = "album", path="album")
-public interface AlbumRepository {
+//@RepositoryRestResource(collectionResourceRel = "Album", path="album")
+public interface AlbumRepository { // extends PagingAndSortingRepository<Album, Long> {
     List<Album> findAll();
     Album find(Long id);
     List<Album> findByName(String name);

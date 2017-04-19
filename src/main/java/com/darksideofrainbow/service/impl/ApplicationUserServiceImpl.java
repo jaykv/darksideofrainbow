@@ -17,7 +17,7 @@ public class ApplicationUserServiceImpl implements ApplicationUserService {
     }
 
     @Override
-    public ApplicationUser findByUsername(String username) {
+    public ApplicationUser findByUserName(String username) {
         return applicationUserRepository.findByUserName(username);
     }
 }

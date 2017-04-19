@@ -26,4 +26,8 @@ public class SiteController {
         return "login";
     }
 
+    @RequestMapping(value = "/callback")
+    public String callbackPage() {
+        return "callback";
+    }
 }

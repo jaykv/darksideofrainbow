@@ -11,5 +11,4 @@ public interface AlbumService {
     Album create(Album album);
     Album edit(Long id, String name, Double price);
     Boolean delete(Long id);
-
 }

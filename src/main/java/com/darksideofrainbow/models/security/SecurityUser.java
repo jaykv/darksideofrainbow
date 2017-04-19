@@ -35,16 +35,6 @@ public class SecurityUser extends ApplicationUser implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return this.getPassword();
-    }
-
-    @Override
-    public String getUsername() {
-        return this.getUsername();
-    }
-
-    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
