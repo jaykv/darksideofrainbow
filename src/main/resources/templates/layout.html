@@ -38,7 +38,7 @@
 <body>
 <!-- Header fragment -->
 <header th:fragment="header(activePage)">
-    <div class="navbar navbar-inverse" th:classappend="${#strings.equals(activePage,'index')} ? navbar-no-margin : ''">
+    <div id="navbar-main" class="navbar navbar-inverse navbar-fixed-top navbar-no-margin" th:classappend="${#strings.equals(activePage,'index')} ? navbar-no-margin : ''">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -74,19 +74,19 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li th:unless="${#httpServletRequest.remoteUser}"><a th:href="@{/login}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
-                    <li th:if="${#httpServletRequest.remoteUser}"><a th:href="@{/logout}"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a></li>
-                    <li th:if="${#httpServletRequest.remoteUser}" class="dropdown">
+                    <li th:if="${isAdmin}" class="dropdown">
                         <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> Administration
                             <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">Manage Users</a></li>
-                            <li><a href="javascript:void(0)">Manage Albums</a></li>
-                            <li><a href="javascript:void(0)">Site Configuration</a></li>
+                            <li><a th:href="@{'/admin'}">Dashboard</a></li>
+                            <li><a th:href="@{'/admin/albums'}">Albums</a></li>
+                            <li><a th:href="@{'/admin/users'}">Users</a></li>
                             <li class="divider"></li>
-                            <li><a href="javascript:void(0)">User Settings</a></li>
+                            <li><a href="/admin/">Site Settings</a></li>
                         </ul>
                     </li>
+                    <li th:unless="${isUser}"><a th:href="@{/login}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+                    <li th:if="${isUser}"><a th:href="@{/logout}"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -117,10 +117,55 @@
         $(document).ready(function () {
             $('.dropdown-toggle').dropdown();
             $("#dropdown-menu select").dropdown();
+            $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert-dismissible").alert('close');
+            });
         });
     </script>
 </th:block>
 
+
+<th:block th:fragment="sideNav">
+    <nav class="navbar navbar-inverse navbar-no-margin" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Administration</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li><a th:href="@{'/admin'}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+                <li><a th:href="@{'/admin/albums'}"><i class="material-icons">album</i> Albums</a></li>
+                <li><a th:href="@{'/admin/users'}"><i class="fa fa-users"></i> Users</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Server Usage</a></li>
+                        <li><a href="#">Records</a></li>
+                        <li><a href="#">Logs</a></li>
+                        <li><a href="#">Database</a></li>
+                    </ul>
+                <li><a href="#">Reports</a></li>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-user">
+            </ul>
+        </div>
+    </nav>
+</th:block>
+
+<th:block th:fragment="alerts">
+    <div th:if="${alert}" class="alert alert-dismissible alert-fixed" th:classappend="${status}">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <span th:text="${alert}"></span>
+    </div>
+</th:block>
 
 </body>
 </html>

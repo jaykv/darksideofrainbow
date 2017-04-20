@@ -6,6 +6,16 @@ body{
     overflow-x:hidden;
 }
 
+.well-no-margin {
+    margin-top:0px!important;
+}
+@media(min-width:770px) {
+    body .container .jumbotron, body .container .well, body .container-fluid .jumbotron, body .container-fluid .well {
+        margin-top:75px;
+    }
+}
+
+
 .center_div{
     margin: 0 auto;
     width:100% /* value of your choice which suits your alignment */
@@ -42,4 +52,95 @@ body{
 
 #container-jumbo {
     padding-top:300px;
+}
+
+/* Side Bar */
+.navbar-inverse {
+    border-radius: 0px;
+    border: 0px;
+}
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 5px 15px;
+}
+
+@media (max-width:768px) {
+    .navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+}
+
+@media (min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 15px 25px;
+    }
+
+    .side-nav {
+        margin-left: -225px;
+        left: 225px;
+        width: 225px;
+        position: fixed;
+        top: 50px;
+        height: 100%;
+        border-radius: 0;
+        border: none;
+        background-color: #222222;
+        overflow-y: auto;
+    }
+
+    /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
+    .side-nav > li.dropdown > ul.dropdown-menu {
+        position: relative;
+        min-width: 225px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+
+
+    .side-nav > li.dropdown > ul.dropdown-menu > li > a {
+        color: #999999;
+        padding: 15px 15px 15px 25px;
+    }
+
+    .side-nav > li>a {
+        width: 225px;
+    }
+
+    .navbar-collapse {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+}
+
+.body-container {
+    width:100%;
+    padding-left:0px;
+    padding-right:0px;
+}
+.material-icons {
+    font-size:1.3333333333em;
+}
+
+.alert-fixed {
+    position:fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index:9999;
+    border-radius:0px
 }

@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ApplicationUserCrudRepository extends CrudRepository<ApplicationUser, Integer> {
-
+public interface ApplicationUserCrudRepository extends CrudRepository<ApplicationUser, Long> {
     List<ApplicationUser> findByUsernameAllIgnoreCase(String username);
-
 }

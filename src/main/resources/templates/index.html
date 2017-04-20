@@ -10,8 +10,8 @@
     </div>
 </div>
 <div id="container-main" class="container-fluid center_div">
-    <div class="well">
-        <h3 th:if="${#httpServletRequest.remoteUser}" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3>
+    <div class="well well-no-margin">
+        <h3 th:if="${isUser}" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3>
         <div class="text-center">
             <h1>FEATURED TRENDING ALBUMS</h1>
             <h3>NEW ALBUM LIST</h3>

@@ -1,11 +1,13 @@
 package com.darksideofrainbow.service.impl;
 
 import com.darksideofrainbow.models.Album;
+import com.darksideofrainbow.models.Genre;
 import com.darksideofrainbow.repository.AlbumRepository;
 import com.darksideofrainbow.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -35,8 +37,8 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public Album edit(Long id, String name, Double price) {
-        return albumRepository.edit(id, name, price);
+    public Album edit(Long id, String name, String artist, LocalDateTime dateReleased, int tracks, Genre genre, Double price) {
+        return albumRepository.edit(id, name, artist, dateReleased, tracks, genre, price);
     }
 
     @Override

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:include="layout :: headFragment(pageTitle='Administration - Dashboard')"></head>
+<body>
+
+<header th:include="layout :: header(activePage='')"></header>
+<th:block th:include="layout :: sideNav"></th:block>
+<div id="wrapper">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Dashboard<small> - Summary</small></h1>
+                <ol class="breadcrumb">
+                    <li class="active"><i class="icon-file-alt"></i> Dashboard</li>
+                </ol>
+                <div class="container body-container">
+                    <div class="well well-no-margin">
+                        <h2 th:inline="text">Welcome [[${user.username}]]</h2>
+                        <h5>This is the main dashboard page... quick summary will be added here later.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:include="layout :: footer"></footer>
+<th:block th:include="layout :: script"></th:block>
+
+</body>
+</html>

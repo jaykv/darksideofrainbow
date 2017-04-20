@@ -16,7 +16,7 @@ public class ApplicationUser {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "application_user_id_seq")
     @SequenceGenerator(name = "application_user_id_seq", sequenceName = "application_user_id_seq", allocationSize = 100)
-    private Integer id;
+    private Long id;
 
     private String username;
     private String password;
