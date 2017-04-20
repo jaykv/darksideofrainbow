@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head th:include="layout :: headFragment(pageTitle='Dark Side of the Rainbow')"></head>
-<body ng-app="albumsApp" ng-controller="albums" class="ng-cloak">
+<body>
 
 <header th:include="layout :: header(activePage='index')"></header>
 <div id="main-jumbo" class="jumbotron">
@@ -11,29 +11,90 @@
 </div>
 <div id="container-main" class="container-fluid center_div">
     <div class="well well-no-margin">
-        <h3 th:if="${isUser}" th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3>
+        <div th:if="${isUser}" class="text-center"><strong><h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3></strong></div>
         <div class="text-center">
+            <!-- TODO: automate this list -->
             <h1>FEATURED TRENDING ALBUMS</h1>
-            <h3>NEW ALBUM LIST</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51jNytp9pxL._SS500.jpg" alt="DAMN." style="width:75%"/>
+                    </a>
+                    <div class="caption">
+                        <p><strong>DAMN.</strong></p>
+                        <p>Kendrick Lamar</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51ZoJkxaRRL._SS500.jpg" alt="More Life" style="width:75%"/>
+                    </a>
+                    <div class="caption">
+                        <p><strong>More Life</strong></p>
+                        <p>Drake</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="#">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/51CVc6mfPwL._SS500.jpg" alt="Search For Everything" style="width:75%"/>
+                    </a>
+
+                    <div class="caption">
+                        <p><strong>Search For Everything</strong></p>
+                        <p>John Mayer</p>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <br/><br/>
+
+        <div class="text-center">
+            <h1>ALL ALBUMS</h1>
+        </div>
+
+        <div class="table-responsive">
+            <table id="searchTable" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Date Released</th>
+                    <th>Tracks</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Buy</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="album : ${albums}">
+                    <td><p th:text="${album.albumId}"/></td>
+                    <td><p th:text="${album.title}"/></td>
+                    <td><p th:text="${album.artist}"/></td>
+                    <td><p th:text="${album.dateReleased}"/></td>
+                    <td><p th:text="${album.tracks}"/></td>
+                    <td><p th:text="${album.genre}"/></td>
+                    <td><p th:inline="text">$[[${album.price}]]</p></td>
+                    <td><a th:href="@{'/shop/' + ${album.albumId}}">Buy</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- TODO- connect stuff
         <button class="btn btn-primary btn-raised btn-lg" ng-click="login()">Connect to Spotify</button>
+
 
         <div class="row">
             <div ng-repeat="al in albumsList | limitTo:-3" class="col-md-4">
                 <a href="#">
-                    <img src="https://www.w3schools.com//w3images/lights.jpg" alt="Lights" style="width:100%"/>
+                    <img src="lights.jpg" alt="Lights" style="width:100%"/>
                 </a>
                 <div class="caption">
                     <p>{{al.title}}</p>
                     <p>{{al.artist}}</p>
                 </div>
             </div>
-        </div>
-        <!--
-        <h1>Greeting</h1>
-        <div ng-controller="home as home" class="ng-cloak">
-            <p>The ID is {{home.greeting.id}}</p>
-            <p>The content is {{home.greeting.content}}</p>
         </div>
         -->
     </div>
@@ -42,7 +103,11 @@
 <footer th:include="layout :: footer"></footer>
 
 <th:block th:include="layout :: script"></th:block>
-<script th:src="@{/js/lib/angular-spotify.min.js}"></script>
-<script th:src="@{/js/app.js}"></script>
+
+<th:block th:include="layout :: dataTable"></th:block>
+<script>$(document).ready(function () {$('#searchTable').DataTable();});</script>
+<!--<script th:src="@{/js/lib/angular-spotify.min.js}"></script>
+<script th:src="@{/js/app.js}"></script>-->
+
 </body>
 </html>

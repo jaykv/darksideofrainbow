@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 
+<!-- Head Fragment -->
 <head th:fragment="headFragment(pageTitle)">
 
     <meta charset="utf-8"/>
@@ -22,6 +23,8 @@
 
     <link href="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"/>
+
     <!-- Dropdown.js -->
     <link href="//cdn.rawgit.com/FezVrasta/dropdown.js/master/jquery.dropdown.css" rel="stylesheet"/>
 
@@ -36,7 +39,8 @@
 </head>
 
 <body>
-<!-- Header fragment -->
+
+<!-- Header Fragment -->
 <header th:fragment="header(activePage)">
     <div id="navbar-main" class="navbar navbar-inverse navbar-fixed-top navbar-no-margin" th:classappend="${#strings.equals(activePage,'index')} ? navbar-no-margin : ''">
         <div class="container-fluid">
@@ -56,23 +60,23 @@
                         <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Shop
                             <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)">Albums</a></li>
-                            <li><a href="javascript:void(0)"></a></li>
-                            <li><a href="javascript:void(0)">Something else here</a></li>
+                            <li><a href="javascript:void(0)">Album</a></li>
+                            <li><a href="javascript:void(0)">Music</a></li>
                             <li class="divider"></li>
-                            <li class="dropdown-header">Dropdown header</li>
-                            <li><a href="javascript:void(0)">Separated link</a></li>
-                            <li><a href="javascript:void(0)">One more separated link</a></li>
+                            <li class="dropdown-header">Cart</li>
+                            <li><a href="javascript:void(0)">View Cart</a></li>
+                            <li><a href="javascript:void(0)">FAQ</a></li>
                         </ul>
                     </li>
                     <li th:class="${#strings.equals(activePage,'contact')} ? active : ''"><a th:href="@{/contact-us}">Contact Us</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-left">
+                <form method="post" th:action="@{'/search'}" class="navbar-form navbar-left">
                     <div class="form-group">
-                        <input type="text" class="form-control col-md-8" placeholder="Search"/>
+                        <input name="searchquery" type="text" class="form-control col-md-8" placeholder="Search"/>
                     </div>
                 </form>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li th:if="${isAdmin}" class="dropdown">
                         <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i> Administration
@@ -93,17 +97,17 @@
     </div>
 </header>
 
-
-<!-- Footer fragment -->
+<!-- Footer Fragment -->
 <footer th:fragment="footer">
     <div class="container text-center">
         <p>&copy; 2017 - Dark Side of the Rainbow</p>
     </div>
 </footer>
 
+
+<!-- Scripts Fragment -->
 <th:block th:fragment="script">
     <script th:src="@{'webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js'}"/>
-
     <script th:src="@{'webjars/bootstrap-material-design/0.5.10/dist/js/material.js'}"></script>
     <script th:src="@{'webjars/bootstrap-material-design/0.5.10/dist/js/ripples.min.js'}"></script>
     <script src="//fezvrasta.github.io/snackbarjs/dist/snackbar.min.js"></script>
@@ -120,11 +124,13 @@
             $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
                 $(".alert-dismissible").alert('close');
             });
+
         });
     </script>
 </th:block>
 
 
+<!-- Admin Navbar Fragment -->
 <th:block th:fragment="sideNav">
     <nav class="navbar navbar-inverse navbar-no-margin" role="navigation">
         <div class="navbar-header">
@@ -139,7 +145,6 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li><a th:href="@{'/admin'}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-
                 <li><a th:href="@{'/admin/albums'}"><i class="material-icons">album</i> Albums</a></li>
                 <li><a th:href="@{'/admin/users'}"><i class="fa fa-users"></i> Users</a></li>
 
@@ -160,6 +165,7 @@
     </nav>
 </th:block>
 
+<!-- Alerts Fragment -->
 <th:block th:fragment="alerts">
     <div th:if="${alert}" class="alert alert-dismissible alert-fixed" th:classappend="${status}">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -167,5 +173,10 @@
     </div>
 </th:block>
 
+<!-- Datatable Fragment -->
+<th:block th:fragment="dataTable">
+    <script th:src="@{/js/lib/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/lib/dataTables.bootstrap.min.js}"></script>
+</th:block>
 </body>
 </html>

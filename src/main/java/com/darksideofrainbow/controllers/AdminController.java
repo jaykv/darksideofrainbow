@@ -42,7 +42,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String mainAdminPage() {
-        return "admin/";
+        return "admin/admin";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
@@ -52,7 +52,7 @@ public class AdminController {
         return "admin/users";
     }
 
-    @RequestMapping(value = "/admin/albums", method = RequestMethod.GET)
+    @RequestMapping(value = {"/admin/albums", "/admin/albums/view"}, method = RequestMethod.GET)
     public String albumsAdminPage(Model model) {
         model = alertAttributes(model);
         model.addAttribute("albums", albumService.findAll());

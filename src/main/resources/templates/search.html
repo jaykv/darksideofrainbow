@@ -3,11 +3,59 @@
 <head th:include="layout :: headFragment(pageTitle='Search - Dark Side of the Rainbow')"></head>
 <body>
 
-<header th:include="layout :: header(activePage='search')"></header>
+<header th:include="layout :: header(activePage='index')"></header>
+<div id="main-jumbo" class="jumbotron">
+    <div id="container-jumbo" class="text-center container">
+        <button id="btn-discover" class="btn btn-primary btn-raised btn-lg">Discover Music</button>
+    </div>
+</div>
+<div id="container-main" class="container-fluid center_div">
+    <div class="well well-no-margin">
+        <div th:if="${isUser}" class="text-center"><h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]] </h3></div>
 
+        <div class="text-center">
+            <div class="table-responsive" th:if="${isFound == true}">
+                <h1 th:inline="text">Found [[${totFound}]] Albums with Query: [[${query}]]</h1>
+                <table id="searchTable" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>Date Released</th>
+                        <th>Tracks</th>
+                        <th>Genre</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="album : ${foundAlbums}">
+                        <td><p th:text="${album.albumId}"/></td>
+                        <td><p th:text="${album.title}"/></td>
+                        <td><p th:text="${album.artist}"/></td>
+                        <td><p th:text="${album.dateReleased}"/></td>
+                        <td><p th:text="${album.tracks}"/></td>
+                        <td><p th:text="${album.genre}"/></td>
+                        <td><p th:text="${album.price}"/></td>
+                        <td><a th:if="${isUser}" th:href="@{'/admin/albums/edit/' + ${album.albumId}}">Edit</a></td>
+                        <td><a th:if="${isUser}" th:href="@{'/admin/albums/delete/' + ${album.albumId}}">Delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:unless="${isFound}">
+                <h1 th:inline="text">No records were found with: [[${query}]]</h1>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer th:include="layout :: footer"></footer>
 
-
+<th:block th:include="layout :: script"></th:block>
+<th:block th:include="layout :: dataTable"></th:block>
+<script>$(document).ready(function () {$('#searchTable').DataTable();});</script>
 </body>
 </html>

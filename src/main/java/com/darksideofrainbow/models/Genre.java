@@ -1,5 +1,5 @@
 package com.darksideofrainbow.models;
 
 public enum Genre {
-    ROCK, CLASSICAL, POP, JAZZ, HIP_HOP, OTHER
+    ROCK, CLASSICAL, POP, JAZZ, HIP_HOP, ELECTRONIC, OTHER
 }

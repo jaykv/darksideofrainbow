@@ -1,7 +1,3 @@
-/**
- * Created by Jay on 4/19/2017.
- */
-
 var admin = angular.module('albumAdmin', [])
     .controller('albumCtrl', function($scope, $http) {
 

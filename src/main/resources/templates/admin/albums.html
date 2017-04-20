@@ -20,18 +20,19 @@
                         <a link="button" class="btn btn-lg btn-raised btn-primary" th:href="@{'/admin/albums/add'}">New Album</a>
                         <h3>Albums List</h3>
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="searchTable" class="table table-striped table-hover">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Artist</th>
-                                    <th>Date Released</th>
-                                    <th>Tracks</th>
-                                    <th>Genre</th>
-                                    <th>Price</th>
-                                    <th colspan="2">Actions</th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Artist</th>
+                                        <th>Date Released</th>
+                                        <th>Tracks</th>
+                                        <th>Genre</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                        <th></th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="album : ${albums}">
@@ -56,9 +57,9 @@
     </div>
 </div>
 
-
 <footer th:include="layout :: footer"></footer>
 <th:block th:include="layout :: script"></th:block>
-
+<th:block th:include="layout :: dataTable"></th:block>
+<script>$(document).ready(function () {$('#searchTable').DataTable();});</script>
 </body>
 </html>

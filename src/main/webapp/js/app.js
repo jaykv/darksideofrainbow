@@ -1,17 +1,7 @@
 
-
-var hello = angular.module('hello', [])
-    .controller('home', function($scope, $http) {
-        var self = this;
-        $http.get('/resource/').then(function(response) {
-           self.greeting = response.data;
-        });
-    });
-
-
 var album = angular.module('albumsApp', ['spotify'])
     .config(function (SpotifyProvider) {
-        SpotifyProvider.setClientId('4659df16b6564ff8b10af7e82504d247');
+        SpotifyProvider.setClientId('');//todo: finish this
         SpotifyProvider.setRedirectUri('http://localhost:8080/callback');
         SpotifyProvider.setScope('');
         // If you already have an auth token

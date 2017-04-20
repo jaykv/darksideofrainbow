@@ -1,8 +1,8 @@
 package com.darksideofrainbow.repository.impl;
 
-import com.darksideofrainbow.jpa.ApplicationUserCrudRepository;
 import com.darksideofrainbow.models.ApplicationUser;
 import com.darksideofrainbow.repository.ApplicationUserRepository;
+import com.darksideofrainbow.jpa.ApplicationUserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
