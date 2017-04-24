@@ -26,6 +26,9 @@ public class SiteController {
         return "login";
     }
 
+    @RequestMapping(value = "/register")
+    public String registerPage(){return "register";}
+
     @RequestMapping(value = "/callback")
     public String callbackPage() {
         return "callback";

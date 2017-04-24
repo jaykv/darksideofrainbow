@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
-<head th:include="layout :: headFragment(pageTitle='Administration - Edit Album')"></head>
+<head>
+    <th:block th:include="layout :: headFragment(pageTitle='Administration - Edit Album')"></th:block>
+    <link href="/css/datepicker.min.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/lib/datepicker.min.js"></script>
+
+    <!-- Include English language -->
+    <script src="/js/lib/datepicker.en.js"></script>
+</head>
 <body>
 
 <header th:include="layout :: header(activePage='')"></header>
@@ -53,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="inputGenre" class="col-md-2 control-label">Genre</label>
                                     <div class="col-md-10">
-                                        <select name="albumGenre" class="form-control" id="inputGenre">
+                                        <select name="albumGenre" class="form-control inputSelectMD" id="inputGenre">
                                             <option th:each="genre : ${T(com.darksideofrainbow.models.Genre).values()}"
                                                     th:value="${{genre}}"
                                                     th:text="${genre}"

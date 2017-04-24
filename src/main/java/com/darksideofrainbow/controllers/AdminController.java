@@ -187,7 +187,6 @@ public class AdminController {
             this.alert = "User could not be deleted";
             this.status = "alert-danger";
         }
-        System.out.println(this.alert);
         return "redirect:/admin/users";
     }
 

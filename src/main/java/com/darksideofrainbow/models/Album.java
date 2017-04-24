@@ -1,11 +1,9 @@
 package com.darksideofrainbow.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @NoArgsConstructor
@@ -33,4 +31,12 @@ public class Album {
         this.tracks = tracks;
         this.price = price;
     }
+
+
+    public String formatDateReleased() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MMM d");
+        return this.dateReleased.format(formatter);
+    }
+
+
 }

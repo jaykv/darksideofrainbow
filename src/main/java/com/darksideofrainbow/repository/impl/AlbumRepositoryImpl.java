@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Repository
 public class AlbumRepositoryImpl implements AlbumRepository {
 
+
     @Autowired
     private AlbumCrudRepository albumCrudRepository;
 
@@ -64,4 +65,5 @@ public class AlbumRepositoryImpl implements AlbumRepository {
         albumCrudRepository.delete(id);
         return Boolean.TRUE;
     }
+
 }
