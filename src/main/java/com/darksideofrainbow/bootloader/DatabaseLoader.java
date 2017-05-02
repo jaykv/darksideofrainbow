@@ -24,6 +24,11 @@ public class DatabaseLoader implements ApplicationListener<ContextRefreshedEvent
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    public void addUser(String username, String password, Boolean isAdmin) {
+        ApplicationUser user = new ApplicationUser(username, passwordEncoder.encode(password), isAdmin);
+        applicationUserRepository.create(user);
+    }
+
     private void addAlbum(String title, String artist, LocalDateTime dateReleased, Genre genre, int tracks, double price) {
         Album album = new Album(title, artist, dateReleased, genre, tracks, price);
         albumRepository.create(album);
@@ -51,13 +56,9 @@ public class DatabaseLoader implements ApplicationListener<ContextRefreshedEvent
         addAlbum("Search For Everything", "John Mayer", getDate(2017, 4, 14), Genre.ROCK, 12, 12.00);
         addAlbum("24K Magic", "Bruno Mars", getDate(2016, 11, 18), Genre.POP, 9, 10.00);
 
-        ApplicationUser admin = new ApplicationUser("admin", passwordEncoder.encode("123456"), Boolean.TRUE);
-        applicationUserRepository.create(admin);
-        ApplicationUser admin2 = new ApplicationUser("manager", passwordEncoder.encode("password"), Boolean.TRUE);
-        applicationUserRepository.create(admin2);
-        ApplicationUser user1 = new ApplicationUser("john", passwordEncoder.encode("user"), Boolean.FALSE);
-        applicationUserRepository.create(user1);
-        ApplicationUser user2 = new ApplicationUser("bobby", passwordEncoder.encode("user"), Boolean.FALSE);
-        applicationUserRepository.create(user2);
+        addUser("admin", "123456", Boolean.TRUE);
+        addUser("manager","password", Boolean.TRUE);
+        addUser("john", "user", Boolean.FALSE);
+        addUser("bobby", "user", Boolean.FALSE);
     }
 }
