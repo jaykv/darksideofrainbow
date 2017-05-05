@@ -14,8 +14,12 @@ import java.util.List;
 
 @Controller
 public class IndexController {
+    private final AlbumService albumService;
+
     @Autowired
-    private AlbumService albumService;
+    public IndexController(AlbumService albumService) {
+        this.albumService = albumService;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String searchForm(@RequestParam(value = "albumName") String albumName, Model model) {

@@ -21,14 +21,16 @@ public class AdminController {
     private String alert = null;
     private String status = null;
 
-    @Autowired
-    private AlbumService albumService;
+    private final AlbumService albumService;
+    private final ApplicationUserService applicationUserService;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private ApplicationUserService applicationUserService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public AdminController(AlbumService albumService, ApplicationUserService applicationUserService, PasswordEncoder passwordEncoder) {
+        this.albumService = albumService;
+        this.applicationUserService = applicationUserService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     private Model alertAttributes(Model model) {
         if(this.alert != null) {

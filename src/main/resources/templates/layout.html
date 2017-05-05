@@ -91,6 +91,17 @@
                             <li><a href="/admin/">Site Settings</a></li>
                         </ul>
                     </li>
+                    <li th:if="${isUser}" class="dropdown">
+                        <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" th:inline="text"><i class="fa fa-user" aria-hidden="true"></i> [[${#httpServletRequest.remoteUser}]]
+                            <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{'/user'}">Profile</a></li>
+                            <li><a th:href="@{'/user/favorites'}">Favorites</a></li>
+                            <li><a th:href="@{'/user/settings'}">Settings</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/logout">Logout</a></li>
+                        </ul>
+                    </li>
                     <li th:unless="${isUser}"><a th:href="@{/login}"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
                     <li th:if="${isUser}"><a th:href="@{/logout}"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a></li>
                 </ul>

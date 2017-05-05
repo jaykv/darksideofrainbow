@@ -57,7 +57,7 @@ public class AlbumRepositoryImpl implements AlbumRepository {
             album.setPrice(price);
             return albumCrudRepository.save(album);
         }
-        return album;
+        return null;
     }
 
     @Override

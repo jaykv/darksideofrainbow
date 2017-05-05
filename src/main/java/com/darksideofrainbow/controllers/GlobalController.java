@@ -12,14 +12,22 @@ public class GlobalController {
     @ModelAttribute("isUser")
     public Boolean isUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return !(auth == null || auth.getName().equals("anonymousUser"));
+        try {
+            return !(auth == null || auth.getName().equals("anonymousUser"));
+        } catch(Exception e) {
+            return false;
+        }
     }
 
     @ModelAttribute("isAdmin")
     public Boolean isAdmin() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth == null || auth.getName().equals("anonymousUser"))
+        try {
+            if (auth == null || auth.getName().equals("anonymousUser"))
+                return false;
+        } catch(Exception e) {
             return false;
+        }
 
         /* TODO- Update to Use Granted Authorities */
         ApplicationUser principal = (ApplicationUser)auth.getPrincipal();
