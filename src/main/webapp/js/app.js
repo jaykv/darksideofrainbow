@@ -1,38 +1,14 @@
 
-var album = angular.module('albumsApp', ['spotify'])
-    .config(function (SpotifyProvider) {
-        SpotifyProvider.setClientId('');//todo: finish this
-        SpotifyProvider.setRedirectUri('http://localhost:8080/callback');
-        SpotifyProvider.setScope('');
-        // If you already have an auth token
-        //SpotifyProvider.setAuthToken('<AUTH_TOKEN>');
-    })
-    .controller('albums', ['Spotify', '$scope', '$http', '$rootScope', function(Spotify, $scope, $http, $rootScope) {
-        $rootScope.albumsList = [];
 
-        var loadAlbums = function(callback) {
-            $http.get('/api/albums').then(function (data) {
-                $rootScope.albumsList = data.data._embedded.albums;
-                console.log(this.albumsList);
-            });
-        };
+var main = angular.module('mainApp', ['datatables', 'datatables.bootstrap'])
+    .controller('mainController', ['DTOptionsBuilder', '$scope', '$http', '$rootScope', function(DTOptionsBuilder, $scope, $http, $rootScope) {
+        $scope.albumList = [];
 
-        loadAlbums();
+        $http.get('/api/albums').then(function(response) {
+            $scope.albumList = response.data._embedded.Album;
+        });
 
-        $scope.login = function () {
-            Spotify.login().then(function (data) {
-                console.log(data);
-                console.log("You are now logged in");
-                $scope.loadSpotifyAlbums();
-            }, function () {
-                console.log('didn\'t log in');
-            })
-        };
-
-        $scope.loadSpotifyAlbums = function(callback) {
-            Spotify.getNewReleases({limit:5}).then(function (data) {
-                console.log(data);
-                $rootScope.albumsList = data.albums.items;
-            });
-        };
+        $scope.formatDate = function(date) {
+            return date.monthValue + "/" + date.dayOfMonth + "/" + date.year;
+        }
     }]);

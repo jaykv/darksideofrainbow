@@ -8,9 +8,4 @@ var admin = angular.module('albumAdmin', [])
                 console.log('error: deleting');
             });
         };
-
-
-        $http.get('/resource/').then(function(response) {
-            self.greeting = response.data;
-        });
     });

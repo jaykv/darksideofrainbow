@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="/webjars/bootstrap-material-design/0.5.10/dist/css/bootstrap-material-design.min.css" />
     <link rel="stylesheet" href="/webjars/bootstrap-material-design/0.5.10/dist/css/ripples.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/css/datatables.bootstrap.min.css"/>
+    <!--     <link rel="stylesheet" type="text/css" href="/css/angular-datatables.min.css"/> -->
+
 
     <!-- Dropdown.js -->
     <link rel="stylesheet" type="text/css" href="/css/jquery.dropdown.css"/>
@@ -32,7 +35,6 @@
 
     <script src="/webjars/jquery/2.1.3/jquery.min.js"></script>
     <script src="/webjars/angularjs/1.6.2/angular.min.js"></script>
-    <script src="/webjars/angularjs/1.6.2/angular-route.min.js"></script>
 
     <script src="/js/lib/pace.min.js"></script>
     <link href="/css/pace-theme-minimal.css" rel="stylesheet" />
@@ -184,7 +186,11 @@
 <!-- Datatable Fragment -->
 <th:block th:fragment="dataTable">
     <script th:src="@{/js/lib/jquery.dataTables.min.js}"></script>
-    <script th:src="@{/js/lib/dataTables.bootstrap.min.js}"></script>
+    <script src="/js/lib/angular-datatables.min.js"></script>
+    <script src="/js/lib/angular-datatables.bootstrap.min.js"></script>
+
+    <!--<script th:src="@{/js/lib/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/lib/datatables.bootstrap.min.js}"></script>-->
 </th:block>
 </body>
 </html>
